@@ -1,6 +1,7 @@
 package com.coinChangeService.Coin.Change.Service.dao;
 
 import com.coinChangeService.Coin.Change.Service.model.AvailableCoin;
+import com.coinChangeService.Coin.Change.Service.model.Currency;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface AvailableCoinDao {
 
     List<AvailableCoin> getAvailableCoins();
 
-    void updateCoins(Map<Integer, Integer> deductCoinMap);
+    void updateCoins(Map<Currency, Integer> deductCoinMap);
 }

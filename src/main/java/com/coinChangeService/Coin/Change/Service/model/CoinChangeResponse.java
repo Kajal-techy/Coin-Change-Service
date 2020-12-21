@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Currency {
+public class CoinChangeResponse {
 
-    int value;
-    CurrencyUnit unit;
-    CurrencyType type;
+    Currency currency;
+    int numberOfCoins;
 }

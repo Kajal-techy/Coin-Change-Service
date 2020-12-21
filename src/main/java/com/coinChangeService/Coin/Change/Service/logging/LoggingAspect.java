@@ -13,7 +13,8 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class LoggingAspect {
 
-    @Around("execution(* com.coinChangeService.Coin.Change.Service.controller.ChangeCoinController.*(..)) || execution(* com.coinChangeService.Coin.Change.Service.service.ChangeCoinServiceImpl.*(..))")
+    @Around("execution(* com.coinChangeService.Coin.Change.Service.controller.ChangeCoinController.*(..)) " +
+            "|| execution(* com.coinChangeService.Coin.Change.Service.service.ChangeCoinServiceImpl.*(..))")
     public Object around(ProceedingJoinPoint jointpoint) throws Throwable {
         log.debug("Entering into {}.{}", jointpoint.getTarget().getClass().getSimpleName(), jointpoint.getSignature().getName());
         long startTime = System.currentTimeMillis();
@@ -23,7 +24,8 @@ public class LoggingAspect {
         return response;
     }
 
-    @AfterThrowing(pointcut = "execution(* com.coinChangeService.Coin.Change.Service.controller.ChangeCoinController.*(..)) || execution(* com.coinChangeService.Coin.Change.Service.service.ChangeCoinServiceImpl.*(..))", throwing = "ex")
+    @AfterThrowing(pointcut = "execution(* com.coinChangeService.Coin.Change.Service.controller.ChangeCoinController.*(..))  " +
+            "|| execution(* com.coinChangeService.Coin.Change.Service.service.ChangeCoinServiceImpl.*(..))", throwing = "ex")
     public void printException(JoinPoint jointpoint, Exception ex) throws Throwable {
         log.error("Exiting from {}.{} with exception {} ", jointpoint.getTarget().getClass().getSimpleName(), jointpoint.getSignature().getName(), ex.toString());
     }

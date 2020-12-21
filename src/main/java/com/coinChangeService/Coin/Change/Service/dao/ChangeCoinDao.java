@@ -9,11 +9,11 @@ import java.util.Map;
 @Repository
 public interface ChangeCoinDao {
 
-    void populateCoinCombinationMap(Map<Currency, List<Map<Integer, Integer>>> coinsCombination);
+    void populateCoinCombinationMap(Map<Currency, List<Map<Currency, Integer>>> coinsCombination);
 
     void populateValidBills(List<Currency> bills);
 
-    List<Map<Integer, Integer>> getSortedCombinationsForCurrency(Currency currency);
+    List<Map<Currency, Integer>> getSortedCombinationsForCurrency(Currency currency);
 
     boolean validateBill(int billAmount);
 

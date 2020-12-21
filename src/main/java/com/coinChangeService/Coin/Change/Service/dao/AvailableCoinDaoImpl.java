@@ -27,13 +27,12 @@ public class AvailableCoinDaoImpl implements AvailableCoinDao {
     }
 
     @Override
-    public void updateCoins(Map<Integer, Integer> deductCoinMap) {
-        for (Integer key : deductCoinMap.keySet()) {
-            Currency currency = Currency.builder().value(key).build();
+    public void updateCoins(Map<Currency, Integer> deductCoinMap) {
+        for (Currency currency : deductCoinMap.keySet()) {
             availableCoins.stream()
                     .filter(coin -> coin.getCurrency().equals(currency))
                     .forEach(coin -> {
-                        coin.setRemaining(coin.getRemaining() - deductCoinMap.get(key));
+                        coin.setRemaining(coin.getRemaining() - deductCoinMap.get(currency));
                     });
         }
     }
